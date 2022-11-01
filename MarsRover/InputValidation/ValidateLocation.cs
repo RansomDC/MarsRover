@@ -6,12 +6,13 @@ using System.Threading.Tasks;
 
 namespace MarsExplorer.InputValidation
 {
-    internal class ValidateLocation
+    public class ValidateLocation
     {
         //Used to validate input from the user for the ExplorationGrid class. Valid input syntax for this class is two integers that are separated by a single space (e.g. "3 3").
         public static bool IsValid(string input, ExplorationGrid grid)
         {
-            string[] ValidationTest = input.ToUpper().Trim().Split(" ");
+            var adjustedInput = input.ToUpper().Trim();
+            string[] ValidationTest = adjustedInput.Split(" ");
             try
             {
                 if (int.Parse(ValidationTest[0]) < 0 ||

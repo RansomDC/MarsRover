@@ -6,10 +6,15 @@ using System.Threading.Tasks;
 
 namespace MarsExplorer.InputValidation
 {
-    internal class ValidateInstructions
+    public class ValidateInstructions
     {
         public static bool IsValid(string input)
         {
+            if(input is null)
+            {
+                return false;
+            }
+
             foreach (char instruction in input.ToUpper())
             {
                 if (instruction != 'L' && instruction != 'R' && instruction != 'M')

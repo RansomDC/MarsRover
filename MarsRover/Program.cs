@@ -1,5 +1,4 @@
 ﻿using MarsExplorer.InputValidation;
-using MarsExplorer.Rovers;
 using System;
 
 namespace MarsExplorer
@@ -77,9 +76,9 @@ namespace MarsExplorer
 
             // Execute RoverOne and RoverTwo instructions and print the ending locations
             Console.WriteLine("Rover One location:");
-            roverOne.ExecuteInstructions(roverOneInstructions);
+            Console.WriteLine(roverOne.ExecuteInstructions(roverOneInstructions));
             Console.WriteLine("Rover Two location:");
-            roverTwo.ExecuteInstructions(roverTwoInstructions);
+            Console.WriteLine(roverTwo.ExecuteInstructions(roverTwoInstructions));
 
 
         }

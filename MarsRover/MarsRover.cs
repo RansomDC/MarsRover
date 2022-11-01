@@ -1,10 +1,13 @@
 ﻿using MarsExplorer.Enums;
 using MarsExplorer.InputValidation;
 
-namespace MarsExplorer.Rovers
+namespace MarsExplorer
 {
-    public class MarsRover : Rover
+    public class MarsRover
     {
+        public int XCoordinate { get; set; }
+        public int YCoordinate { get; set; }
+        public Cardinal Direction { get; set; }
         public ExplorationGrid plateau { get; set; }
 
         // The basic constructors that would take all of the required inputs for the Rover
@@ -16,7 +19,7 @@ namespace MarsExplorer.Rovers
             plateau = Plateau;
         }
 
-        // This constructor takes and parses a string input for the values in the user input. It is meant to be checked with the ValidateRoverLocation class. This constructor is created in order to neaten the Main() Program code.
+        // This constructor takes and parses a string input for the values in the user input. It is meant to be checked with the ValidateLocation class. This constructor is created in order to neaten the Main() Program code.
         public MarsRover(string input, ExplorationGrid Plateau)
         {
             string[] location = input.ToUpper().Trim().Split(" ");
@@ -27,8 +30,13 @@ namespace MarsExplorer.Rovers
             plateau = Plateau;
         }
 
+        private string GetLocationString()
+        {
+            return $"{XCoordinate} {YCoordinate} {Direction}";
+        }
+
         // Iterate a list of instructions and execute each one.
-        public void ExecuteInstructions(string input)
+        public string ExecuteInstructions(string input)
         {
             // We validate the input here so that if this method is ever called without validating in the UI the input will return more useful information
             if (ValidateInstructions.IsValid(input))
@@ -48,7 +56,7 @@ namespace MarsExplorer.Rovers
                         Maintain();
                     }
                 }
-                Console.WriteLine("{0} {1} {2}\n", XCoordinate, YCoordinate, Direction);
+                return GetLocationString();
             }
             else
             {
