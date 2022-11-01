@@ -1,6 +1,6 @@
 # MarsRovers
 
-This project was built using a .NET core console application. It createa Mars Rover "vehicle" that can be given a grid, a location on that grid, and a set of instructions to execute.
+This project was built using a .NET core console application. It creates Mars Rover "vehicle" that can be given a grid, a location on that grid, and a set of instructions to execute.
 
 ### Assumptions for this project:
 1. The area the rover is investigating is a rectangular plateau.
