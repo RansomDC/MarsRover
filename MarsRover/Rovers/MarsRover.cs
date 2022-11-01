@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using MarsExplorer.InputValidation;
 
-namespace MarsExplorer
+namespace MarsExplorer.Rovers
 {
     public class MarsRover : Rover
     {
@@ -30,10 +26,11 @@ namespace MarsExplorer
             plateau = Plateau;
         }
 
+        // Iterate a list of instructions and execute each one.
         public void ExecuteInstructions(string input)
         {
             // We validate the input here so that if this method is ever called without validating in the UI the input will return more useful information
-            if (ValidateInstructions(input))
+            if (ValidateInstructions.IsValid(input))
             {
                 foreach (char instruction in input.ToUpper())
                 {
@@ -56,43 +53,12 @@ namespace MarsExplorer
             {
                 throw new ArgumentException();
             }
-
         }
 
-        //Used to validate input from the user for the ExplorationGrid class. Valid input syntax for this class is two integers that are separated by a single space (e.g. "3 3").
-        public static bool IsValidInput(string input, ExplorationGrid grid)
+        // Rotate the rover to the right without moving.
+        private void Left()
         {
-            string[] ValidationTest = input.ToUpper().Trim().Split(" ");
-            try
-            {
-                if (int.Parse(ValidationTest[0]) < 0 ||
-                    int.Parse(ValidationTest[1]) < 0 ||
-                    int.Parse(ValidationTest[0]) > grid.GridWidth ||
-                    int.Parse(ValidationTest[1]) > grid.GridHeight)
-                {
-                    Console.WriteLine("Your input did not match the exploration grid's parameters.");
-                    return false;
-                }
-                else if (ValidationTest[2] != "N" &&
-                    ValidationTest[2] != "E" &&
-                    ValidationTest[2] != "S" &&
-                    ValidationTest[2] != "W")
-                {
-                    Console.WriteLine("Your third input needs to be one of the cardinal directions (e.g. N, S, E or W).");
-                    return false;
-                }
-            }
-            catch (Exception)
-            {
-                return false;
-            }
-
-            return ValidationTest.Length == 3;
-        }
-
-        public void Left()
-        {
-            if(Direction == Cardinal.N)
+            if (Direction == Cardinal.N)
             {
                 Direction = Cardinal.W;
             }
@@ -102,7 +68,8 @@ namespace MarsExplorer
             }
         }
 
-        public void Right()
+        // Rotate the rover to the right without moving.
+        private void Right()
         {
             if (Direction == Cardinal.W)
             {
@@ -114,23 +81,24 @@ namespace MarsExplorer
             }
         }
 
-        public void Maintain()
+        // Move forward one space assuming the rover is not at the end of the grid
+        private void Maintain()
         {
-            if(Direction == Cardinal.N)
+            if (Direction == Cardinal.N)
             {
-                if(YCoordinate < plateau.GridHeight)
+                if (YCoordinate < plateau.GridHeight)
                 {
                     YCoordinate++;
                 }
             }
-            else if(Direction == Cardinal.E)
+            else if (Direction == Cardinal.E)
             {
                 if (XCoordinate < plateau.GridWidth)
                 {
                     XCoordinate++;
                 }
             }
-            else if(Direction == Cardinal.S)
+            else if (Direction == Cardinal.S)
             {
                 if (YCoordinate > 0)
                 {
@@ -144,18 +112,6 @@ namespace MarsExplorer
                     XCoordinate--;
                 }
             }
-        }
-
-        public static bool ValidateInstructions(string input)
-        {
-            foreach(char instruction in input.ToUpper())
-            {
-                if(instruction != 'L' && instruction != 'R' && instruction != 'M')
-                {
-                    return false;
-                }
-            }
-            return true;
         }
     }
 }
