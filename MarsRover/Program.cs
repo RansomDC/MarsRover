@@ -76,7 +76,9 @@ namespace MarsExplorer
             }
 
             // Execute RoverOne and RoverTwo instructions and print the ending locations
+            Console.WriteLine("Rover One location:");
             roverOne.ExecuteInstructions(roverOneInstructions);
+            Console.WriteLine("Rover Two location:");
             roverTwo.ExecuteInstructions(roverTwoInstructions);
 
 

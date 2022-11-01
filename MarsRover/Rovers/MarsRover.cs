@@ -1,4 +1,5 @@
-﻿using MarsExplorer.InputValidation;
+﻿using MarsExplorer.Enums;
+using MarsExplorer.InputValidation;
 
 namespace MarsExplorer.Rovers
 {
