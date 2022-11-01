@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MarsExplorer.Rovers
+namespace MarsExplorer.Enums
 {
     public enum Cardinal
     {
