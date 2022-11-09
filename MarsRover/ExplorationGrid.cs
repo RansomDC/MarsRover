@@ -8,15 +8,15 @@ namespace MarsExplorer
 {
     public class ExplorationGrid
     {
-        public int GridWidth { get; set; }
-        public int GridHeight { get; set; }
+        public int XAxisMax { get; set; }
+        public int YAxisMax { get; set; }
 
 
         // The basic constructors that would take all of the normal required inputs for the an ExplorationGrid
         public ExplorationGrid(int Width, int Height)
         {
-            GridHeight = Height;
-            GridWidth = Width;
+            YAxisMax = Height;
+            XAxisMax = Width;
         }
 
         // This constructor takes and parses a string input for the values in the user input. It is meant to be checked with the ValidateExplorationGrid class. This constructor is created in order to neaten the Main() Program code.
@@ -24,8 +24,8 @@ namespace MarsExplorer
         {
             string[] inputs = input.Trim().Split(" ");
 
-            GridWidth = int.Parse(inputs[0]);
-            GridHeight = int.Parse(inputs[1]);
+            XAxisMax = int.Parse(inputs[0]);
+            YAxisMax = int.Parse(inputs[1]);
         }
     }
 }

@@ -49,13 +49,16 @@ namespace MarsExplorer
                 {
                     Right();
                 }
-                else
+                else if (instruction == 'M')
                 {
                     Maintain();
                 }
+                else
+                {
+                    throw new ArgumentException();
+                }
             }
             return GetLocationString();
-
         }
 
         // Rotate the rover to the right without moving.
@@ -89,14 +92,14 @@ namespace MarsExplorer
         {
             if (Direction == Cardinal.N)
             {
-                if (YCoordinate < plateau.GridHeight)
+                if (YCoordinate < plateau.YAxisMax)
                 {
                     YCoordinate++;
                 }
             }
             else if (Direction == Cardinal.E)
             {
-                if (XCoordinate < plateau.GridWidth)
+                if (XCoordinate < plateau.XAxisMax)
                 {
                     XCoordinate++;
                 }

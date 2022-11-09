@@ -17,8 +17,8 @@ namespace MarsExplorer.InputValidation
             {
                 if (int.Parse(ValidationTest[0]) < 0 ||
                     int.Parse(ValidationTest[1]) < 0 ||
-                    int.Parse(ValidationTest[0]) > grid.GridWidth ||
-                    int.Parse(ValidationTest[1]) > grid.GridHeight)
+                    int.Parse(ValidationTest[0]) > grid.XAxisMax ||
+                    int.Parse(ValidationTest[1]) > grid.YAxisMax)
                 {
                     Console.WriteLine("Your input did not match the exploration grid's parameters.");
                     return false;
