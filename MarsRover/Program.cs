@@ -22,6 +22,7 @@ namespace MarsExplorer
             // Once grid values are valid, create the new ExplorationGrid
             var plateauSurface = new ExplorationGrid(gridInput);
 
+
             // *** Requrest location and direction of the first Rover. Get input from user. Validate the input, and re-request if input is invalid *** \\
             Console.WriteLine("Please describe the location on the grid of the rover and the direction it is facing (e.g. \"2 2 N\").");
             var firstLocation = Console.ReadLine();
@@ -37,6 +38,7 @@ namespace MarsExplorer
             // Once location is valid, create the new MarsRover
             var roverOne = new MarsRover(firstLocation, plateauSurface);
 
+
             // *** Request instructions for the first Rover. Get input from user. Validate the input, and re-request if input is invalid *** \\
             Console.WriteLine("Please enter a series of instructions (no spaces) for the first Rover using R or L to turn right or left, or M to move forward (e.g. \"MLMR\").");
             var roverOneInstructions = Console.ReadLine();
@@ -47,6 +49,7 @@ namespace MarsExplorer
                 roverOneInstructions = Console.ReadLine();
                 roverOnevalid = ValidateInstructions.IsValid(roverOneInstructions);
             }
+
 
             // *** Requrest location and direction of the second Rover. Get input from user. Validate the input, and re-request if input is invalid *** \\
             Console.WriteLine("Please describe the location on the grid of the rover and the direction it is facing (e.g. \"2 2 N\").");
@@ -62,6 +65,7 @@ namespace MarsExplorer
             }
             // Once location is valid, create the new MarsRover
             var roverTwo = new MarsRover(secondLocation, plateauSurface);
+
 
             // *** Request instructions for the second Rover. Get input from user. Validate the input, and re-request if input is invalid *** \\
             Console.WriteLine("Please enter a series of instructions (no spaces) for the first Rover using R or L to turn right or left, or M to move forward (e.g. \"MLMR\").");
@@ -81,6 +85,12 @@ namespace MarsExplorer
             Console.WriteLine(roverTwo.ExecuteInstructions(roverTwoInstructions));
 
 
+            // Test Input:
+            // 5 5
+            // 1 2 N
+            // LMLMLMLMM
+            // 3 3 E
+            // MMRMMRMRRM
         }
     }
 }

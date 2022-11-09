@@ -39,29 +39,23 @@ namespace MarsExplorer
         public string ExecuteInstructions(string input)
         {
             // We validate the input here so that if this method is ever called without validating in the UI the input will return more useful information
-            if (ValidateInstructions.IsValid(input))
+            foreach (char instruction in input.ToUpper())
             {
-                foreach (char instruction in input.ToUpper())
+                if (instruction == 'L')
                 {
-                    if (instruction == 'L')
-                    {
-                        Left();
-                    }
-                    else if (instruction == 'R')
-                    {
-                        Right();
-                    }
-                    else
-                    {
-                        Maintain();
-                    }
+                    Left();
                 }
-                return GetLocationString();
+                else if (instruction == 'R')
+                {
+                    Right();
+                }
+                else
+                {
+                    Maintain();
+                }
             }
-            else
-            {
-                throw new ArgumentException();
-            }
+            return GetLocationString();
+
         }
 
         // Rotate the rover to the right without moving.
